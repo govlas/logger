@@ -161,6 +161,13 @@ func Fatal(message string, v ...interface{}) {
 	os.Exit(1)
 }
 
+// Panic prints error log and call panic
+func Panic(message string, v ...interface{}) {
+	DisableBTrace()
+	Error(message, v...)
+	panic(fmt.Sprintf(message, v...))
+}
+
 // ErrorErr prints err as error log and returns true if err!=nil
 func ErrorErr(err error) bool {
 	if err != nil {
