@@ -2,6 +2,8 @@
 
 Simple colored logger
 
+![logger](screenshot.png)
+
 To install:
 
     go get github.com/govlas/logger
