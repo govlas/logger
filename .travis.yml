@@ -1,0 +1,16 @@
+language: go
+
+sudo: false
+
+go:
+    - 1.4
+    - tip
+
+
+before_install:
+    - go get github.com/fatih/color
+    - go get github.com/shiena/ansicolor
+
+script: 
+    - go test -v ./...
+
