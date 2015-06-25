@@ -91,12 +91,14 @@ func makeStack() (ret string) {
 		fnc := runtime.FuncForPC(r)
 		file, line := fnc.FileLine(r - 1)
 
-		stack_line := fmt.Sprintf("\t%s:%d\n\t\t%s\n", file, line, fnc.Name())
+		stack_line := fmt.Sprintf("\t%s:%d\n", file, line)
+		stack_func := fmt.Sprintf("\t\t%s\n", fnc.Name())
 		if colored {
 			stack_line = color.MagentaString(stack_line)
+			stack_func = color.MagentaString(stack_func)
 		}
 
-		ret += stack_line
+		ret += stack_line + stack_func
 	}
 	return
 }
