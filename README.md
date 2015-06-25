@@ -1,6 +1,4 @@
-# logger
-
-[![Build Status](https://travis-ci.org/govlas/logger.svg?branch=master)](https://travis-ci.org/govlas/logger)
+# logger [![Build Status](https://travis-ci.org/govlas/logger.svg?branch=master)](https://travis-ci.org/govlas/logger)
 
 Simple colored logger
 
