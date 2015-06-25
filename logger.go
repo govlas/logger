@@ -162,21 +162,21 @@ func Debug(message string, v ...interface{}) {
 
 // Fatal prints error log and finish proccess by os.Exit(1)
 func Fatal(message string, v ...interface{}) {
-	Error(message, v...)
+	printLog(color.FgRed, ErrPrefix, true, message, v...)
 	os.Exit(1)
 }
 
 // Panic prints error log and call panic
 func Panic(message string, v ...interface{}) {
 	DisableBTrace()
-	Error(message, v...)
+	printLog(color.FgRed, ErrPrefix, true, message, v...)
 	panic(fmt.Sprintf(message, v...))
 }
 
 // ErrorErr prints err as error log and returns true if err!=nil
 func ErrorErr(err error) bool {
 	if err != nil {
-		Error("%v", err)
+		printLog(color.FgRed, ErrPrefix, true, "%v", err)
 		return true
 	}
 	return false
@@ -185,7 +185,7 @@ func ErrorErr(err error) bool {
 // WarningErr prints err as warning log and returns true if err!=nil
 func WarningErr(err error) bool {
 	if err != nil {
-		Warning("%v", err)
+		printLog(color.FgYellow, WarnPrefix, true, "%v", err)
 		return true
 	}
 	return false
@@ -194,6 +194,6 @@ func WarningErr(err error) bool {
 // FatalErr prints err as fatal log
 func FatalErr(err error) {
 	if err != nil {
-		Fatal("%v", err)
+		printLog(color.FgRed, ErrPrefix, true, "%v", err)
 	}
 }
