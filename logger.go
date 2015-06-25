@@ -90,7 +90,13 @@ func makeStack() (ret string) {
 	for _, r := range st {
 		fnc := runtime.FuncForPC(r)
 		file, line := fnc.FileLine(r - 1)
-		ret += fmt.Sprintf("\t%s:%d\n\t\t%s\n", file, line, fnc.Name())
+
+		stack_line := fmt.Sprintf("\t%s:%d\n\t\t%s\n", file, line, fnc.Name())
+		if colored {
+			stack_line = color.MagentaString(stack_line)
+		}
+
+		ret += stack_line
 	}
 	return
 }
@@ -126,9 +132,6 @@ func printLog(colora color.Attribute, prefix string, printTrace bool, message st
 	var stack string
 	if printTrace && btrace {
 		stack = makeStack()
-		if colored {
-			stack = color.MagentaString(stack)
-		}
 	}
 	fmt.Fprint(output, f("%s %s %s\n", time.Now().Format(timeFormat), prefix+fileName, fmt.Sprintf(message, v...)), stack)
 }
