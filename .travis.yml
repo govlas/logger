@@ -12,5 +12,6 @@ before_install:
     - go get github.com/shiena/ansicolor
 
 script: 
+	- go vet ./..
     - go test -v ./...
 
