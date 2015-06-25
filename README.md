@@ -14,5 +14,4 @@ Dependencies:
 	go get github.com/fatih/color
 	go get github.com/shiena/ansicolor
 
-See docs for usage:
-	https://godoc.org/github.com/govlas/logger
+[See docs for usage](https://godoc.org/github.com/govlas/logger)
