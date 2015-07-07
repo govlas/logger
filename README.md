@@ -2,7 +2,6 @@
 
 Simple colored logger
 
-![logger](screenshot.png)
 
 To install:
 
