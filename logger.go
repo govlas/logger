@@ -173,6 +173,12 @@ func Panic(message string, v ...interface{}) {
 	panic(fmt.Sprintf(message, v...))
 }
 
+func PanicRecover() {
+	if err := recover(); err != nil {
+		Error("PANIC: %s", err)
+	}
+}
+
 // ErrorErr prints err as error log and returns true if err!=nil
 func ErrorErr(err error) bool {
 	if err != nil {
