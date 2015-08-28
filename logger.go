@@ -2,6 +2,7 @@
 package logger
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"os"
@@ -202,5 +203,12 @@ func WarningErr(err error) bool {
 func FatalErr(err error) {
 	if err != nil {
 		printLog(color.FgRed, ErrPrefix, true, "%v", err)
+	}
+}
+
+func JsonDebug(a interface{}) {
+	buf, err := json.MarshalIndent(a, "", "  ")
+	if !WarningErr(err) {
+		Debug("%s", buf)
 	}
 }
