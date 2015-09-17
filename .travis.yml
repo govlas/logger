@@ -4,6 +4,7 @@ sudo: false
 
 go:
     - 1.4
+    - 1.5
     - tip
 
 
@@ -12,6 +13,5 @@ before_install:
     - go get github.com/shiena/ansicolor
 
 script: 
-    - go vet ./...
     - go test -v ./...
 
