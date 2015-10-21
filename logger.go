@@ -92,14 +92,14 @@ func makeStack() (ret string) {
 		fnc := runtime.FuncForPC(r)
 		file, line := fnc.FileLine(r - 1)
 
-		stack_line := fmt.Sprintf("\t%s:%d\n", file, line)
-		stack_func := fmt.Sprintf("\t\t%s\n", fnc.Name())
+		stackLine := fmt.Sprintf("\t%s:%d\n", file, line)
+		stackFunc := fmt.Sprintf("\t\t%s\n", fnc.Name())
 		if colored {
-			stack_line = color.MagentaString(stack_line)
-			stack_func = color.MagentaString(stack_func)
+			stackLine = color.MagentaString(stackLine)
+			stackFunc = color.MagentaString(stackFunc)
 		}
 
-		ret += stack_line + stack_func
+		ret += stackLine + stackFunc
 	}
 	return
 }
@@ -206,7 +206,8 @@ func FatalErr(err error) {
 	}
 }
 
-func JsonDebug(a interface{}) {
+// JSONDebug prints object in json format
+func JSONDebug(a interface{}) {
 	buf, err := json.MarshalIndent(a, "", "  ")
 	if !WarningErr(err) {
 		Debug("%s", buf)
