@@ -203,6 +203,7 @@ func WarningErr(err error) bool {
 func FatalErr(err error) {
 	if err != nil {
 		printLog(color.FgRed, ErrPrefix, true, "%v", err)
+		os.Exit(1)
 	}
 }
 
